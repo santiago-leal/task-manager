@@ -2,6 +2,7 @@
 import * as express from "express";
 import { Express } from "express";
 import * as dotenv from "dotenv";
+import router from "./routes/routes";
 import taskRoutes from "./routes/task.routes";
 import userRoutes from "./routes/user.routes";
 
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
+app.use("/", router)
 app.use("/users", userRoutes);
 app.use("/tasks", taskRoutes);
 

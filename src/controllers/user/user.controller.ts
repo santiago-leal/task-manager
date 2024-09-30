@@ -6,6 +6,12 @@ import UserControllerInterface from "../../interfaces/controllers/user/user.cont
 const userRepository = new UserRepository()
 
 export default class User implements UserControllerInterface {
+  async login(req: Request, res: Response): Promise<Response> {
+    const {email, password} = req.body
+    const user = await userRepository.find(email)
+    return res.json(user)
+  }
+
   get = async (req: Request, res: Response): Promise<Response> => {
     const id = parseInt(req.params.id)
   
