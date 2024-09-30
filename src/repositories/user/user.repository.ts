@@ -16,6 +16,11 @@ export default class UserRepository implements UserRepositoryInterface {
     return user
   }
 
+  async find(email: string): Promise<User | null> {
+    const user = await User.findOne({where: {email}})
+    return user
+  }
+
   async create(user: {}): Promise<User> {
     const newUser = await User.create(user)
     return newUser
